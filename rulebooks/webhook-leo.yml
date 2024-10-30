@@ -7,9 +7,11 @@
         port: 5000
 
   rules:
-
-    - name: Tenable Advisory
-      condition: event.payload.event is match("created")
+  - name: VLAN created event
+      condition: 
+        all:
+          - event.payload.event is match("created")
+          - event.payload.model is match("vlan")
       action:
         run_job_template:
           organization: "Default"
