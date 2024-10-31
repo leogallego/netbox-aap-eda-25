@@ -8,11 +8,11 @@
 
   rules:
   - name: VLAN created event
-      condition: 
-        all:
-          - event.payload.event is match("created")
-          - event.payload.model is match("vlan")
-      action:
-        run_job_template:
-          organization: "Default"
-          name: "Create VLAN"
+    condition:
+      all:
+        - event.payload.event == "created"
+        - event.payload.model == "vlan"
+    action:
+      run_job_template:
+        organization: "Default"
+        name: "Create VLAN"
